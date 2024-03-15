@@ -1,64 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-.a{
-    background-color: aqua;
-    border: black 2px solid;
-}
-    </style>
 </head>
+<style>
+    .main {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        background-color: aqua;
+    }
+
+    .main-form {
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid black;
+        height: fit-content;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .sub-form-div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    label {
+        font-size: 1.5rem;
+    }
+
+    input {
+        border-radius: 6px;
+        padding: 5px;
+    }
+
+    button {
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+</style>
 
 <body>
-    <h1><center>Registration Form:</center></h1>
-    <form action="">
-        <div class="a">
-            <br>
-            First Name: <input type="text" placeholder="first name"><br>
-            <br>
-            Middle Name: <input type="text" placeholder="middle name"><br>
-            <br>
-            Last Name: <input type="text" placeholder="Last name"><br>
-            <br>
-            course: <select name="course" id="course">
-                <option value="">BCA</option>
-                <option value="">BBA</option>
-                <option value="">B-Tech</option>
-                <option value="">MCA</option>
-            </select><br>
-            <br>
-            <span id="gender">
-                Gender:
-                <br>
-                <input type="radio" name="gender">Male
-                <br>
-                <input type="radio" name="gender">Female
-                <br>
-                <input type="radio" name="gender">others
-            </span>
-            <br>
-            <br>
-            phone no.: <select name="course" id="">
-                <option value="">+91</option>
-            </select><input type="number">
-            <br>
-            <br>
-            E-mail: <input type="email">
-            <br>
-            <br>
-            password: <input type="password">
-            <br>
-            <br>
-            confirm password: <input type="password">
-            <br>
-            <br>
-            <input type="submit" >
-            <br>
+    <div class="main" >
+        <form class="main-form" >
+            <div class="sub-form-div">
+                <label form="" class="firstName">First Name</label>
+                <input>
+            </div>
+            <span class="warning" style="float: left; color: red;"></span>
+            <div class="sub-form-div">
+                <label form="">Middle Name</label>
+                <input>
+            </div>
+            <div class="sub-form-div">
+                <label form="" class="lastName">Last Name</label>
+                <input>
+            </div>
+            <div class="sub-form-div">
+                <label form="">Options</label>
+                <select>
+                    <!-- <option></option> -->
+                    <option>BCA</option>
+                    <option>M Tech</option>
+                    <option>MCA</option>
+                </select>
+            </div>
+            <div class="sub-form-div " style="flex-direction: column;">
+                <label for="">Gender</label>
+                <div>
+                    <input type="radio" name="1">
+                    <label>Male</label>
+                </div>
+                <div>
+                    <input type="radio" name="1">
+                    <label>FeMale</label>
+                </div>
+                <div>
+                    <input type="radio" name="1">
+                    <label>Other</label>
+                </div>
+            </div>
+            <div class="sub-form-div">
+                <label form="">Phone Number</label>
+                <input type="tel" class="password">
+            </div>
+            <span class="warning-tel" style="float: left; color: red;"></span>
+            <div class="sub-form-div" style="flex-direction: column;">
+                <label form="">Address</label>
+                <textarea cols="100" rows="10"></textarea>
 
-        </div>
-    </form>
+            </div>
+            <div class="sub-form-div">
+                <label for="">Email</label>
+                <input type="email" class="email">
+            </div>
+            <div class="sub-form-div">
+                <label for="">Password</label>
+                <input type="password" class="password">
+            </div>
+            <div class="sub-form-div">
+                <label for="">RE-Enter Password</label>
+                <input type="password" class="re-password">
+            </div>
+            <span class="warning-pass" style="float: left; color: red;"></span>
+
+            <button>Submit</button>
+        </form>
+    </div>
+    <script>
+        document.querySelector("form").addEventListener("submit", (e) => {
+            e.preventDefault()
+            if (e.target[10].value != e.target[11].value) {
+                document.querySelector(".warning-pass").innerHTML = "Password is not same"
+            }
+            else if (e.target[0].value.length < 3 || e.target[2].value.length < 3 || e.target[10].value.length < 6 || e.target[11].value.length < 5) {
+                document.querySelector(".warning").innerHTML = "Please enter a Valid length"
+            }
+            else if (e.target[7].value.length !== 10) {
+                console.log(e.target.value)
+                document.querySelector(".warning-tel").innerHTML = "Not a Valid Phone Number"
+            }
+        })
+    </script>
 </body>
+
 </html>
